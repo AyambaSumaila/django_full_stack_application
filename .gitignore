@@ -2,3 +2,56 @@ env
 .env 
 
 readme.md
+
+
+
+# Setting up postgresql database
+#### pip install psycopg2-binary
+
+### sudo -u postgres psql
+#### CREATE DATABASE  moviedb
+#### CREATE USER testuser WITH PASSWORD test12345
+
+#### ALTER ROLE testuser SET client_encoding TO 'utf8';
+
+
+##### ALTER ROLE testuser SET default_transaction_isolation TO 'read committed';
+
+##### ALTER ROLE testuser SET timezone TO 'UTC';
+### GRANT ALL PRIVILEGES ON DATABASE moviedb TO testuser;
+
+
+### \q
+
+
+
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'movie_db',
+        'USER': 'movie_user',
+        'PASSWORD': 'userPassword12345',
+        'HOST': 'localhost',  # Set to '127.0.0.1' if 'localhost' doesn't work
+        'PORT': '5432',       # Default PostgreSQL port
+    }
+}
+
+
+
+Building Microservices by Newman, S. (2015)
+
+NOTE
+We suggest storing your app templates under the next directory structure –
+app_name/templates/app_name/my_template.html. Sometimes, different apps can
+contain templates with the same name, which could lead to potential name conflicts in
+template resolution. By using the previous strategy, you can define templates with the same
+name in different Django apps without any potential name conflict.
+
+
+1. Configure the about URL.
+2. Define the about function.
+3. Create the about template.
+
+
+pip install python-decouple
